@@ -89,6 +89,7 @@ public class AutoGradingTest {
 		assertEquals(video.getName(), received.getName());
 		assertEquals(video.getDuration(), received.getDuration());
 		assertTrue(received.getLikes() == 0);
+		System.out.println(received.getId() + "  " + video.getId());
 		assertTrue(received.getId() > 0);
 	}
 
@@ -203,7 +204,7 @@ public class AutoGradingTest {
 
 		// Get the video again
 		v = readWriteVideoSvcUser1.getVideoById(v.getId());
-
+		
 		// Make sure the like count is 1
 		assertTrue(v.getLikes() == 1);
 

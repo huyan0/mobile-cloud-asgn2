@@ -1,9 +1,13 @@
 package org.magnum.mobilecloud.video;
 
+import org.magnum.mobilecloud.video.auth.OAuth2SecurityConfiguration;
+import org.magnum.mobilecloud.video.repository.VideoRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
@@ -21,6 +25,9 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 // Any class in this package that is annotated with @Controller is going to be
 // automatically discovered and connected to the DispatcherServlet.
 @ComponentScan
+@EnableJpaRepositories(basePackageClasses=VideoRepository.class)
+@Import(OAuth2SecurityConfiguration.class)
+
 public class Application extends RepositoryRestMvcConfiguration {
 
 	// The app now requires that you pass the location of the keystore and
